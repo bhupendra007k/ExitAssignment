@@ -1,0 +1,64 @@
+.btn{
+    color: cornflowerblue;
+    text-decoration: underline;
+}
+.btn:hover {
+    color: darkblue;
+  }
+.delbtn{
+    color: red;
+    text-decoration: underline;
+    border: none;
+    background-color: #fff;
+}
+.delbtn:hover{
+    color: darkred;
+}
+.reimburstment
+{
+    color: #3b60a3;
+    border: 1px solid #3b60a3;
+    background: none;
+}
+.claim{
+    color: #3b60a3;
+    font-size: 15px;
+    font-weight: bold;
+}
+.modal.show{
+    display: block;
+}
+.button{
+    border: 1px solid  #3b60a3;
+    color: #3b60a3;
+}
+.close{
+    outline: none;
+    border: none;
+    background: none;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    color: #3b60a3;
+    padding: 20px;
+    border: 1px solid #3b60a3;
+}
+
+.modal-content{
+    width: 700px !important;
+    height: 450px !important;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #3b60a3;
+}
+
+.form-control{
+    border: 1px solid #3b60a3
+}
+.form-select{
+    border: 1px solid #3b60a3
+}

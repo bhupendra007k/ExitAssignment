@@ -1,0 +1,19 @@
+.input-group{
+    display: flex;
+    width: 35%;
+    
+}
+.search{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+.row{
+    display: flex;
+    width: 35%;
+    gap: 5px;
+}
+.form-select{
+    display: flex;
+    width: 100%;
+}
