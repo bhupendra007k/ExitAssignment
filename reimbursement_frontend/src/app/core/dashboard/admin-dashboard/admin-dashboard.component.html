@@ -1,208 +1,180 @@
 <div class="container" style="margin-top: 10px;">
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link active" data-bs-toggle="tab" href="#pending">Pending Request</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" href="#decline">Declined</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-bs-toggle="tab" href="#approved">Approved</a>
-      </li>
-    </ul>
+    <div style="display:flex ;  justify-content:space-between; align-items: center;" >
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#pending">Pending Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#decline">Declined</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#approved">Approved</a>
+            </li>
+        </ul>
+        <div>
+            <button class="reimburstment" (click)="logout()">Logout</button>
+        </div>
+    </div>
+   
     <!-- Search bar -->
     <div class="search">
-    <div class="input-group">
-      <input type="search" class="form-control rounded" placeholder="Search by email" aria-label="Search" aria-describedby="search-addon" />
-      <button type="button" class="btn btn-outline-primary" style="border: none;">search</button>
+        <div class="input-group">
+            <input type="text" class="form-control search-field" placeholder="Search by email" [(ngModel)]="searchText" aria-label="Search"
+                aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-primary" style="border: none;">search</button>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm col-form-label">Reimbursement Type</label>
+            <div class="col-sm">
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="searchReimbursement">
+                    <option value="Food">Food</option>
+                    <option value="Travel">Travel</option>
+                    <option value="Medical">Medical</option>
+                </select>
+            </div>
+            
+            
+        </div>
     </div>
-    <div class="form-group row">
-      <label class="col-sm col-form-label">Reimbursement Type</label>
-      <div class="col-sm">
-          <select class="form-select" aria-label="Default select example">
-              <option selected>--All--</option>
-              <option value="1">Food</option>
-              <option value="2">Travel</option>
-              <option value="3">Medical</option>
-          </select>
-      </div>
-  </div>
-  </div>
     <!-- Tab panes -->
     <div class="tab-content">
-      <div class="tab-pane container active" id="pending"> <table class="table" style="text-align:center">
-        <thead class="thead-light">
-            <tr class="table-active">
-                <th scope="col">Date</th>
-                <th scope="col">Requested By</th>
-                <th scope="col">Reimbursement Type</th>
-                <th scope="col">Requested Value</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Receipt Attached</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>04-09-2019</td>
-                <td>mail</td>
-                <td>medical</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Food</td>
-                <td>18875</td>
-                <td>1234</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Travel</td>
-                <td>18875</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table></div>
-      <div class="tab-pane container fade" id="decline"> <table class="table" style="text-align:center">
-        <thead class="thead-light">
-            <tr class="table-active">
-                <th scope="col">Date</th>
-                <th scope="col">Requested By</th>
-                <th scope="col">Reimbursement Type</th>
-                <th scope="col">Requested Value</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Receipt Attached</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Medical</td>
-                <td>18875</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Food</td>
-                <td>18875</td>
-                <td>1234</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Travel</td>
-                <td>18875</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-  </div>
-      <div class="tab-pane container fade" id="approved"> <table class="table" style="text-align:center">
-        <thead class="thead-light">
-            <tr class="table-active">
-                <th scope="col">Date</th>
-                <th scope="col">Requested By</th>
-                <th scope="col">Reimbursement Type</th>
-                <th scope="col">Requested Value</th>
-                <th scope="col">Currency</th>
-                <th scope="col">Receipt Attached</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Medical</td>
-                <td>18875</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Food</td>
-                <td>18875</td>
-                <td>1234</td>
-                <td>INR</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>04-09-2019</td>
-                <td>Travel</td>
-                <td>18875</td>
-                <td>1323</td>
-                <td>INR</td>
-                <td>To be Processed</td>
-                <td>Yes</td>
-                <td>
-                    <button class="btn">Approve</button>&nbsp;
-                    <button class="btn">
-                        Decline
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table></div>
+        <div class="tab-pane container active" id="pending">
+            <table class="table" style="text-align:center">
+                <thead class="thead-light">
+                    <tr class="table-active">
+                        <th scope="col">Date</th>
+                        <th scope="col">Requested By</th>
+                        <th scope="col">Reimbursement Type</th>
+                        <th scope="col">Requested Value</th>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Receipt Attached</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of allReimbursements | pipe: searchText | pipe:searchReimbursement">
+                        <ng-template [ngIf]="item.requestPhase== 'Pending' ">
+                            <td>{{item.date | date}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.reimbursementType}}</td>
+                            <td>{{item.requestedValue}}</td>
+                            <td>{{item.currency}}</td>
+                            <td >{{item.receiptUrl}}</td>
+                            <td>
+                                <button class="btn"  #modalButton type="button" (click)="open(item.reimbursementId);">Approve</button>&nbsp;
+                                <button class="decbtn" (click)="DeclineReimbursement(item.reimbursementId)">Decline</button>
+                            </td>
+                        </ng-template>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade" id="decline">
+            <table class="table" style="text-align:center">
+                <thead class="thead-light">
+                    <tr class="table-active">
+                        <th scope="col">Date</th>
+                        <th scope="col">Requested By</th>
+                        <th scope="col">Reimbursement Type</th>
+                        <th scope="col">Requested Value</th>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Receipt Attached</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let item of allReimbursements | pipe: searchText | pipe:searchReimbursement">
+                        <ng-template [ngIf]="item.requestPhase== 'Declined' ">
+                            <td>{{item.date | date}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.reimbursementType}}</td>
+                            <td>{{item.requestedValue}}</td>
+                            <td>{{item.currency}}</td>
+                            <td>{{item.receiptUrl}}</td>
+                        </ng-template>
+                            
+                           
+                            
+                            
+
+                        
+                            
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane container fade" id="approved">
+            <table class="table" style="text-align:center">
+                <thead class="thead-light">
+                    <tr class="table-active">
+                        <th scope="col">Date</th>
+                        <th scope="col">Requested By</th>
+                        <th scope="col">Reimbursement Type</th>
+                        <th scope="col">Requested Value</th>
+                        <th scope="col">Currency</th>
+                        <th scope="col">Receipt Attached</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of allReimbursements | pipe: searchText | pipe:searchReimbursement">
+                        <ng-template [ngIf]="item.requestPhase== 'Approved' ">
+                            <td>{{item.date | date}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.reimbursementType}}</td>
+                            <td>{{item.requestedValue}}</td>
+                            <td>{{item.currency}}</td>
+                            <td>{{item.receiptUrl}}</td>
+                        </ng-template>
+                    </tr>
+                
+                </tbody>
+            </table>
+        </div>   
     </div>
+<!--Approve Modal -->
+    <div class="modal fade" #testModal id="testModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="header">
+                    <h5 class="modal-title">Add New Reimbursement</h5>
+                    <div>
+                        <button type="button" class="close" data-bs-dismiss="modal">X</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form class="form" [formGroup]="approveReimbursement" (ngSubmit)="PostApprovedReimbursement()">
+                        <div class="form-group row" id="input">
+                            <label class="col-sm-3 col-form-label">Approved by</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="email" formControlName="IsApprover">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="input">
+                            <label class="col-sm-3 col-form-label">Approved Amount</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" id="approvedAmount" formControlName="approvedValue">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="input">
+                            <label class="col-sm-3 col-form-label">Internal Notes</label>
+                            <div class="col-sm-8">
+                                <textarea type="text" class="form-control" id="internalNotes"
+                                    formControlName="internalNotes">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer" style="border: none;">
+                            <button type="submit" class="button">Done</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div> 
+    
 </div>

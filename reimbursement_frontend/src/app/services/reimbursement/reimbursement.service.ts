@@ -27,6 +27,23 @@ export class ReimbursementService {
   UpdateReimbursement(id:any,data:any):Observable<any>{
     return this.http.post(`${this.url}/update/${id}`,data)
   }
-  
+
+  GetAllReimbursements():Observable<any>{
+    return this.http.get(this.url+"/getall")
+  }
+  DeclineReimbursements(id:any):Observable<any>{
+    return this.http.get(`${this.url}/declineReimbursement/${id}`)
+  }
+  GetApprovedReimbursements(id:any):Observable<any>{
+    return this.http.get(`${this.url}/approveReimbursement/${id}`)
+  }
+  ApprovedReimbursements(id:any,data:any):Observable<any>{
+    
+    return this.http.post(`${this.url}/approveReimbursement/${id}`,data)
+  }
+  GetReimbursementById(id:any):Observable<any>{
+    return this.http.get(`${this.url}/getreimbursementbyid/${id}`)
+  }
+
   }
 

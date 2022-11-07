@@ -12,6 +12,7 @@ import { DashboardComponent } from './core/dashboard/employee-dashboard/dashboar
 import { RegisterComponent } from './core/register/register.component';
 import { TokenInterceptorService } from './interceptor/token-interceptor.service';
 import { AdminDashboardComponent } from './core/dashboard/admin-dashboard/admin-dashboard.component';
+import { PipePipe } from './pipe/pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AdminDashboardComponent } from './core/dashboard/admin-dashboard/admin-
     LoginComponent,
     DashboardComponent,
     RegisterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    PipePipe
   ],
   imports: [
     BrowserModule,

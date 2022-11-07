@@ -10,16 +10,20 @@
         <form [formGroup]="employeeRegister" (ngSubmit)="registerUser()">
           <div class="mb-1">
             <label for="exampleInputPassword1" class="form-label">Email</label>
-            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp">
+            <input formControlName="email" type="email" class="form-control" id="exampleInputEmail"
+              aria-describedby="emailHelp">
             <span class="text-danger" *ngIf="email.invalid && email.touched">email is required</span>
             <span class="text-danger" *ngIf="email.errors?.['pattern']">
               Please enter a valid email.
-           </span>
+            </span>
           </div>
           <div class="mb-1">
             <label for="exampleInputPassword1" class="form-label">Password</label>
             <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1">
-            <!-- <span class="text-danger" *ngIf="password.invalid && password.touched">password is required</span> -->
+            <!-- <span class="text-danger" *ngIf="password.invalid && password.touched">password is required</span>
+            <span class="text-danger" *ngIf="password.errors?.['pattern']">
+              password should contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
+            </span> -->
           </div>
           <div class="mb-1">
             <label for="exampleInputPassword2" class="form-label">Re-type Password</label>
@@ -30,33 +34,51 @@
             <label for="exampleInputFullname" class="form-label">Full Name</label>
             <input formControlName="fullname" type="text" class="form-control" id="exampleInputFullname">
             <span class="text-danger" *ngIf="fullname.invalid && fullname.touched">fullname is required</span>
+            <span class="text-danger" *ngIf="fullname.errors.pattern">name only can contain characters</span>
+            <span class="text-danger" *ngIf="fullname.errors?.['maxlength']">
+              name can not be more than 50 characters long.
+            </span>
           </div>
           <div class="mb-1">
             <label for="exampleInputBank" class="form-label">Bank</label>
-            <input formControlName="bank" type="text" class="form-control" id="exampleInputBank">
+            <select class="form-control" aria-label="Default select example" formControlName="bank">
+              <option value="Hdfc">HDFC</option>
+              <option value="Sbi">SBI</option>
+              <option value="Icici">ICICI</option>
+            </select>
+            <!-- <input formControlName="bank" type="text" class="form-control" id="exampleInputBank"> -->
             <span class="text-danger" *ngIf="bank.invalid && bank.touched">bank is required</span>
           </div>
           <div class="mb-1">
             <label for="exampleInputpan" class="form-label">Pan</label>
             <input formControlName="pan" type="text" class="form-control" id="exampleInPutpan">
-            <span *ngIf="pan.touched && pan.invalid" class="text-danger">  
+            <span *ngIf="pan.touched && pan.invalid" class="text-danger">
               <span *ngIf="pan.errors.required">
-                pan Number is required.</span>  
-              <span *ngIf="bankaccountno.errors.pattern">Please, Enter 10 digit Account Number.</span>  
-          </span>  
-         </div>
+                pan Number is required.</span>
+              <span *ngIf="pan.errors.pattern">Please, Enter 10 digit Pan Number.</span>
+            </span>
+          </div>
           <div class="mb-1">
             <label for="exampleInputbankaccount" class="form-label">Bank Account Number</label>
             <input formControlName="bankaccountno" type="number" class="form-control" id="exampleInputbankaccount">
-            <!-- <span *ngIf="bankaccountno.touched && bankaccountno.invalid" class="text-danger">  
+            <span *ngIf="bankaccountno.touched && bankaccountno.invalid" class="text-danger">
               <span *ngIf="bankaccountno.errors.required">
-                Account Number is required.</span>  
-              <span *ngIf="bankaccountno.errors.pattern">Please, Enter 12 digit Account Number.</span>  
-          </span>   -->
-         </div>
-          <button type="submit" class="btn btn-primary">Register</button>
+                Account Number is required.It must be at least 12 characters long.
+              </span>
+              <!-- <span class="text-danger" *ngIf="bankaccountno.errors?.['maxlength']">
+                name can not be more than 12 characters long.
+              </span> 
+              <span class="text-danger" *ngIf="bankaccountno.errors?.['maxlength']">
+                name can not be more than 50 characters long.
+              </span>  -->
+            </span>
+          </div>
+          <button type="submit" [disabled]="employeeRegister.invalid" class="btn btn-primary">Register</button>
+
+          <!-- <button type="submit" [disabled]="employeeRegister.invalid" class="btn btn-primary">Register</button> -->
         </form>
-        <a href="/login" style="color: #fff; margin-top: 10px;" routerLink="/login"> Already Register? Click to Login!</a>
+        <a href="/login" style="color: #fff; margin-top: 10px;" routerLink="/login"> Already Register? Click to
+          Login!</a>
       </div>
     </div>
   </div>

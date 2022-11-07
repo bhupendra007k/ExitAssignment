@@ -13,7 +13,7 @@
         <thead class="thead-light">
             <tr class="table-active">
                 <th scope="col">Date</th>
-                <th scope="col">Reimburstment</th>
+                <th scope="col">Reimburstment Type</th>
                 <th scope="col">Requested Value</th>
                 <th scope="col">Approved Value</th>
                 <th scope="col">Currency</th>
@@ -30,9 +30,10 @@
                 <td>{{item.approvedValue }}</td>
                 <td>{{item.currency}}</td>
                 <td>{{item.requestPhase}}</td>
-                <td>{{item.receiptUrl}}</td>
+                <td>{{item.receiptAttached}}</td>
                 <td>
-                    <button class="btn" #modalButton type="button" (click)="editopen(item.reimbursementId)">Edit</button>&nbsp;
+                    <button class="btn" #modalButton type="button"
+                        (click)="editopen(item.reimbursementId)">Edit</button>&nbsp;
                     <button class="delbtn" (click)="deleteReimbursement(item.reimbursementId)">
                         Delete
                     </button>
@@ -45,8 +46,8 @@
 
 
 
-    
-    
+
+
     <!-- Modal -->
     <div class="modal fade" #testModal id="testModal" tabindex="-1">
         <div class="modal-dialog">
@@ -74,6 +75,7 @@
                                     <option value="Food">Food</option>
                                     <option value="Travel">Travel</option>
                                     <option value="Medical">Medical</option>
+                                    <option value="Misc">Misc</option>
                                 </select>
                             </div>
                         </div>
@@ -87,13 +89,26 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Currency</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="currency" formControlName="currency">
+                                <select class="form-select" aria-label="Default select example"
+                                    formControlName="currency">
+                                    <option selected>select currency</option>
+                                    <option value="INR">INR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="EURO">EURO</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Upload</label>
                             <div class="col-sm-8">
                                 <input type="file" class="form-control" id="upload" formControlName="receiptUrl">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Email</label>
+                            <div class="col-sm-8">
+                                <input type="email" class="form-control" id="email"
+                                    formControlName="email">
                             </div>
                         </div>
                         <div class="modal-footer" style="border: none;">
@@ -132,6 +147,7 @@
                                     <option value="Food">Food</option>
                                     <option value="Travel">Travel</option>
                                     <option value="Medical">Medical</option>
+                                    <option value="Misc">Misc</option>
                                 </select>
                             </div>
                         </div>
@@ -145,7 +161,14 @@
                         <div class="form-group row">
                             <label class="col-sm-3 col-form-label">Currency</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" id="currency" formControlName="currency">
+                                <select class="form-select" aria-label="Default select example"
+                                formControlName="currency">
+                                <option selected>select currency</option>
+                                <option value="INR">INR</option>
+                                <option value="USD">USD</option>
+                                <option value="EURO">EURO</option>
+                            </select>
+                                <!-- <input type="text" class="form-control" id="currency" formControlName="currency"> -->
                             </div>
                         </div>
                         <div class="form-group row">

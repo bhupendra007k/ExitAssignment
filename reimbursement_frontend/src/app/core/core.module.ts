@@ -8,6 +8,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { PipePipe } from '../pipe/pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashb
     DashboardComponent,
     AddNewReimburstmentComponent,
     AdminDashboardComponent,
+    PipePipe
   ],
   imports: [CommonModule, ReactiveFormsModule, FormsModule, NgModule, CoreRoutingModule],
 })

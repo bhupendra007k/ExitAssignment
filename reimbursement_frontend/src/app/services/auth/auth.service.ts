@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private readonly url="https://localhost:44392/"
   employee:any={id:null,token:null}
+  admin:any={id:null,token:null,succeeded:null}
   jwt_token:any|undefined
 
   helper= new JwtHelperService();
@@ -18,13 +19,20 @@ export class AuthService {
   Login(data:any): Observable<any>{
     return this.http.post(this.url+'login',data).pipe(
       map((response:any)=>{
+
+        if (response.result){
+          const decodedToken=this.helper.decodeToken(response.jwtToken.jwtToken);
+          this.admin.id=decodedToken.UserId
+          localStorage.setItem('token',response.jwtToken.jwtToken)
+          this.admin.token=response.jwtToken.jwtToken
+          this.admin.succeeded=response.result.succeeded
+          return this.admin;
+        }
         const decodedToken=this.helper.decodeToken(response.jwtToken);
 
         this.employee.id=decodedToken.UserId;
         localStorage.setItem('token',response.jwtToken)
         this.employee.token=response.jwtToken
-        
-        
         return this.employee;
       }))
       

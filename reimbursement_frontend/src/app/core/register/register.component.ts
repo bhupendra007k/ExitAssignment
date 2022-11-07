@@ -12,22 +12,41 @@ export class RegisterComponent implements OnInit {
 
   employeeRegister: any = FormGroup
 
-  constructor(private formBuilder: FormBuilder,private accountService:AccountService,private router:Router) { }
+  constructor(private formBuilder: FormBuilder, private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
+    
     this.employeeRegister = this.formBuilder.group({
       email: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-    ]),
-      password: new FormControl('', Validators.required),
-      confirmpassword: new FormControl('', Validators.required),
-      fullname: new FormControl('', Validators.required),
-      pan: new FormControl('', [Validators.required, 
-        Validators.pattern("^[A-Za-z]{5}[0-9]{4}[A-Za-z]$")]),
+        Validators.required,
+        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+      ]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$')]),
+      confirmpassword: new FormControl('', [Validators.required]),
+      fullname: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(50),
+        Validators.pattern('^[a-zA-Z ]*$')
+      ]),
+      pan: new FormControl('', [Validators.required,
+      Validators.pattern('^[A-Za-z]{5}[0-9]{4}[A-Za-z]$')]),
       bank: new FormControl('', Validators.required),
-      bankaccountno: new FormControl('', Validators.required)
-    });
+      bankaccountno: new FormControl('', [
+        Validators.required,
+        Validators.maxLength(12),
+        Validators.minLength(12),
+        Validators.pattern('^[0-11]*$')
+      ])
+    },
+   
+    {
+      validators: this.MustMatch('password', 'confirmpassword')
+    }
+    
+    )
 
   }
   get email() {
@@ -52,21 +71,39 @@ export class RegisterComponent implements OnInit {
     return this.employeeRegister.get('bankaccountno');
   }
 
-  registerUser(){
-    console.log(this.employeeRegister.value);
+  MustMatch(controlName: string, matchingControlName: string){
+    return(formGroup: FormGroup) =>{
     
-    this.accountService.Signup(this.employeeRegister.value).subscribe((res=(response:any)=>JSON.parse(response))=>{
+      const control = formGroup.controls[controlName]
+      const matchingControl = formGroup.controls[matchingControlName];
+      if(matchingControl.errors && !matchingControl.errors['MustMatch']){
+        return
+      }
+      if(control.value !== matchingControl.value){
+        matchingControl.setErrors({MustMatch: true});
+      }
+      else{
+        matchingControl.setErrors(null);
+      }
+    }
+
+  }
+
+  registerUser() {
+    console.log(this.employeeRegister.value);
+
+    this.accountService.Signup(this.employeeRegister.value).subscribe((res = (response: any) => JSON.parse(response)) => {
       this.router.navigate(['']);
-      console.log(">>>",res);
-      debugger;
-      if(res){
+      console.log(">>>", res);
+
+      if (res) {
         alert('user created');
         this.employeeRegister.reset();
       }
-      else{
+      else {
         alert("user already exist");
       }
-      
+
     });
 
   }

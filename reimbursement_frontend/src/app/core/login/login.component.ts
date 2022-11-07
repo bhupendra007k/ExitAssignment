@@ -41,14 +41,21 @@ export class LoginComponent implements OnInit {
     return this.employeeLogin.get('password');
   }
   getFormData() {
+  
     this.authService.Login(this.employeeLogin.value).subscribe((response: any) => {
       console.log('>>>', response);
-      if (response) {
+      console.log(response);
+      
+      if (response.succeeded) {
+        this.router.navigate(['admindashboard']);
+       
+      } 
+      else if(response){
         alert('login Successful');
         this.employeeLogin.reset();
         this.router.navigate([`dashboard/${response.id}`]);
-        // localStorage.setItem('token',response.jwtToken)
-      } 
+
+      }
       else {
         alert("Invalid Email or password.");
       }
